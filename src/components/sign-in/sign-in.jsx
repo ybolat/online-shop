@@ -1,8 +1,8 @@
 import FormInput from "../form-input/form-input";
-import Button from "../button/button";
+import Button, {BUTTON_TYPE_CLASSES} from "../button/button";
 import {useState} from "react";
 import {
-    createUserDocumentFromAuth, signInAuthUserWihEmailAndPassword, signInWithGooglePopup
+    signInAuthUserWihEmailAndPassword, signInWithGooglePopup
 } from "../../utils/firebase/firebase";
 import './sign-in.scss';
 
@@ -51,7 +51,8 @@ const SignIn = () => {
                        onChange={(event) => setPassword(event.target.value)}/>
             <div className={"buttons-container"}>
                 <Button type={"submit"} children={"Sign In"}/>
-                <Button buttonType={"google"} onClick={signInWithGoogle} type={"button"} children={"Google Sign In"}/>
+                <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} type={"button"}
+                        children={"Google Sign In"}/>
             </div>
         </form>
     </div>);
