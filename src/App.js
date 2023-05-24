@@ -4,8 +4,23 @@ import Navbar from "./routes/navbar/navbar";
 import Authorization from "./routes/authorization/authorization";
 import Shop from "./routes/shop/shop";
 import Checkout from "./routes/checkout/checkout";
+import {createUserDocumentFromAuth, onAuthStateChangedListener} from "./utils/firebase/firebase";
+import {setCurrentUser} from "./store/user/user.action";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
 
 const App = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        return onAuthStateChangedListener((user) => {
+            if (user) {
+                createUserDocumentFromAuth(user);
+            }
+            dispatch(setCurrentUser(user));
+        });
+    }, [dispatch]);
 
     return <>
         <Routes>

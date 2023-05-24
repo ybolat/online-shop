@@ -1,9 +1,7 @@
 import FormInput from "../form-input/form-input";
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button";
 import {useState} from "react";
-import {
-    signInAuthUserWihEmailAndPassword, signInWithGooglePopup
-} from "../../utils/firebase/firebase";
+import {signInAuthUserWihEmailAndPassword, signInWithGooglePopup} from "../../utils/firebase/firebase";
 import './sign-in.scss';
 
 const SignIn = () => {
@@ -41,7 +39,8 @@ const SignIn = () => {
     }
 
 
-    return (<div className={"sign-in-container"}>
+    return (
+        <div className={"sign-in-container"}>
         <h2>Already have an account?</h2>
         <span>Sign in up with your email and password</span>
         <form onSubmit={handleSubmit}>
@@ -55,7 +54,8 @@ const SignIn = () => {
                         children={"Google Sign In"}/>
             </div>
         </form>
-    </div>);
+    </div>
+    );
 }
 
 export default SignIn;

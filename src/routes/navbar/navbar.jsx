@@ -1,16 +1,17 @@
 import {Outlet} from 'react-router-dom';
-import {Fragment, useContext} from "react";
+import {Fragment} from "react";
 import {ReactComponent as UdemyLogo} from "../../assets/crown.svg";
-import {UserContext} from "../../contexts/user-context";
 import {signOutUser} from "../../utils/firebase/firebase";
 import CartIcon from "../../components/cart-icon/cart-icon";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown";
-import {CartContext} from "../../contexts/cart-context";
 import {LogoContainer, NavigationContainer, NavLink, NavLinks} from "./navbar.style";
+import {useSelector} from "react-redux";
+import {selectCurrentUser} from "../../store/user/user.selector";
+import {selectIsCartOpen} from "../../store/cart/cart.selector";
 
 const Navbar = () => {
-    const {currentUser} = useContext(UserContext);
-    const {isCartOpen} = useContext(CartContext);
+    const currentUser = useSelector(selectCurrentUser);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     return <Fragment>
         <NavigationContainer>
