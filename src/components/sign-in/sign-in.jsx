@@ -1,13 +1,16 @@
 import FormInput from "../form-input/form-input";
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button";
 import {useState} from "react";
-import {signInAuthUserWihEmailAndPassword, signInWithGooglePopup} from "../../utils/firebase/firebase";
 import './sign-in.scss';
+import {useDispatch} from "react-redux";
+import {emailSignInStart, googleSignInStart} from "../../store/user/user.action";
 
 const SignIn = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
 
     const resetAuthorizationForm = () => {
         setEmail("");
@@ -15,14 +18,14 @@ const SignIn = () => {
     }
 
     const signInWithGoogle = async () => {
-        signInWithGooglePopup();
+        dispatch(googleSignInStart());
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            await signInAuthUserWihEmailAndPassword(email, password);
+            dispatch(emailSignInStart(email, password));
             resetAuthorizationForm();
         } catch (error) {
             switch (error.code) {
@@ -37,7 +40,6 @@ const SignIn = () => {
             }
         }
     }
-
 
     return (
         <div className={"sign-in-container"}>
