@@ -8,7 +8,7 @@ export const BaseButton = styled.button`
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
-  font-size: 15px;
+  font-size: 14px;
   background-color: black;
   color: white;
   text-transform: uppercase;
@@ -24,6 +24,7 @@ export const BaseButton = styled.button`
     background-color: white;
     color: black;
     border: 1px solid black;
+    font-size: 14px;
   }
 `
 
